@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      #cards .card{
+        border:1px solid red;
+        display:flex;
+        width:300px;
+      }
+      #cards .card .title{
+        flex-grow: 1;
+      }
+      #cards .card .price{
+        font-weight: bold;
+        padding-right: 20px;
+      }
+      #loading{
+        display: none;
+      }
+      #cards{
+        width:300px;
+        height:250px;
+        border: 1px solid blue;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <button id ="gh">Load</button>
+    <div id="cards">
+      <img width="300px" height="200px" id="loading" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"/>
+    </div>
+
+
+    <script defer>
+      var a=0;
+      function onSuccess(response){
+          return response.text();
+      }
+      function onTextReady(text) {
+          
+          document.querySelector("#loading").style.display="none";
+          var dict=JSON.parse(text);
+          var data;
+          for(var i=0;i<dict.length;i++){
+             data=dict[i];
+             const div=document.createElement('div');
+             div.classList.add("card");
+             const h4=document.createElement('h4');
+             h4.classList.add("title");
+
+             const h42=document.createElement('h4');
+             h42.classList.add("price");
+             h42.textContent=data.price;
+
+             
+             
+
+             h4.textContent=data.maker+" "+data.model;
+
+             div.appendChild(h4);
+             div.appendChild(h42);
+             document.querySelector("#cards").appendChild(div);
+
+
+          }
+
+
+
+         
+         
+
+
+       }
+      
+      function onFail(response){
+      }
+      function call(event){
+        document.querySelector("#loading").style.display="block";
+        fetch("http://demo4296963.mockable.io/listCars").then(onSuccess,onFail).then(onTextReady);
+        document.querySelector("#gh").removeEventListener("click",call);
+      }
+      document.querySelector("#gh").addEventListener("click",call);
+
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	form{
+		display:block;
+	}
+	.div1{
+		display: flex;
+		margin:5px;	
+	}
+	.left{
+		width: 120px;
+	}
+</style>
+<body>
+	<form action="task1.php" methot="get">
+		<div class="div1">
+			<div class="left">
+				Maker & Model
+			</div>
+			<div>
+				<input type="text" name="maker">
+			</div>
+		</div>
+		<div class="div1">
+			<div class="left">
+				Price
+			</div>
+			<div>
+				<input type="text" name="price">
+			</div>
+		</div>
+		<div class="div1">
+			<div class="left">
+				Condition
+			</div>
+			<div>
+				<label for="l1"><input type="radio"  value="New" name="radio">New</label>
+				<label for="l2"><input type="radio" value="Old" name="radio">Old</label>
+			</div>
+		</div>	
+		<div class="div1">
+				<div class="left">
+					Types
+				</div>
+				<div>
+					<select name="select">
+						<option>Sedan</option>
+						<option>Couple</option>
+						<option>Hatchback</option>
+					</select>
+				</div>
+			</div>
+		<div class="div1">
+			<div class="left">
+				<br>
+				Attributes
+				<br>
+			</div>
+			<div>
+				<label><input type="checkbox" value="Cd" name="ch1">CD / DVD</label><br>
+				<label><input type="checkbox"  name="ch2">Cruise control</label><br>
+				<label><input type="checkbox"  name="ch3">Seat Heating</label>
+			</div>
+		</div>
+		<div class="div1">
+			<div class="left">
+				<input type="submit">
+			</div>
+			
+		</div>
+	</form>
+
+</body>
+</html>
